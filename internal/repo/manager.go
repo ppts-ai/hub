@@ -106,6 +106,8 @@ var (
 		hub.TektonPipeline,
 		hub.TektonTask,
 		hub.TektonStepAction,
+		hub.PythonLib,
+		hub.GolangLib,
 	}
 )
 
