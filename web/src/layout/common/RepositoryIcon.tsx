@@ -117,6 +117,14 @@ const ICONS = {
     default: '/static/media/radius.svg',
     white: '/static/media/radius-light.svg',
   },
+  [RepositoryKind.GolangLib]: {
+    default: '/static/media/radius.svg',
+    white: '/static/media/radius-light.svg',
+  },
+  [RepositoryKind.PythonLib]: {
+    default: '/static/media/radius.svg',
+    white: '/static/media/radius-light.svg',
+  },
 };
 
 const RepositoryIcon = (props: Props) => {

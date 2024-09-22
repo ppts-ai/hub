@@ -568,7 +568,9 @@ select results_eq(
         (23, 'Tekton stepactions'),
         (24, 'Meshery designs'),
         (25, 'OpenCost plugins'),
-        (26, 'Radius recipes')
+        (26, 'Radius recipes'),
+        (98, 'Golang Shared Lib'),
+        (99, 'Python Shared Lib')
     $$,
     'Repository kinds should exist'
 );

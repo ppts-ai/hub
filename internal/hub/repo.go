@@ -127,6 +127,10 @@ const (
 
 	// Radius represents a repository with Radius recipes.
 	Radius RepositoryKind = 26
+
+	GolangLib RepositoryKind = 98
+
+	PythonLib RepositoryKind = 99
 )
 
 // GetKindName returns the name of the provided repository kind.
@@ -178,6 +182,10 @@ func GetKindName(kind RepositoryKind) string {
 		return "opencost"
 	case Radius:
 		return "radius"
+	case GolangLib:
+		return "golanglib"
+	case PythonLib:
+		return "pythonlib"
 	case TBAction:
 		return "tbaction"
 	case TektonPipeline:
