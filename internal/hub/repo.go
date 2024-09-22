@@ -249,6 +249,10 @@ func GetKindFromName(kind string) (RepositoryKind, error) {
 		return OpenCost, nil
 	case "radius":
 		return Radius, nil
+	case "golanglib":
+		return GolangLib, nil
+	case "pythonlib":
+		return PythonLib, nil
 	case "tbaction":
 		return TBAction, nil
 	case "tekton-pipeline":
