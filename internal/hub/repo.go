@@ -128,9 +128,9 @@ const (
 	// Radius represents a repository with Radius recipes.
 	Radius RepositoryKind = 26
 
-	GolangLib RepositoryKind = 98
+	GolangLib RepositoryKind = 27
 
-	PythonLib RepositoryKind = 99
+	PythonLib RepositoryKind = 28
 )
 
 // GetKindName returns the name of the provided repository kind.
