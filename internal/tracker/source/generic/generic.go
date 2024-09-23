@@ -248,6 +248,10 @@ func PreparePackage(r *hub.Repository, md *hub.PackageMetadata, pkgPath string) 
 		kindData, err = prepareOPAData(pkgPath, ignorer)
 	case hub.Radius:
 		kindData, err = prepareRadiusData(pkgPath)
+	case hub.GolangLib:
+		kindData, err = prepareRadiusData(pkgPath)
+	case hub.PythonLib:
+		kindData, err = prepareRadiusData(pkgPath)
 	}
 	if err != nil {
 		return nil, fmt.Errorf("error preparing package %s version %s data: %w", md.Name, md.Version, err)

@@ -135,6 +135,8 @@ func lint(opts *lintOptions, out *output) error {
 		hub.OPA,
 		hub.OpenCost,
 		hub.Radius,
+		hub.PythonLib,
+		hub.GolangLib,
 		hub.TBAction:
 		report = lintGeneric(opts.path, kind)
 	case hub.Helm:

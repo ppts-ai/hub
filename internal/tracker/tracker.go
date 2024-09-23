@@ -175,8 +175,6 @@ func (t *Tracker) cloneRepository() (string, string, error) {
 	switch t.r.Kind {
 	case
 		hub.Container,
-		hub.GolangLib,
-		hub.PythonLib,
 		hub.Helm:
 		// These repositories are not cloned
 	case hub.OLM:
@@ -206,6 +204,8 @@ func (t *Tracker) cloneRepository() (string, string, error) {
 		hub.OPA,
 		hub.OpenCost,
 		hub.Radius,
+		hub.PythonLib,
+		hub.GolangLib,
 		hub.TBAction,
 		hub.TektonPipeline,
 		hub.TektonTask,
