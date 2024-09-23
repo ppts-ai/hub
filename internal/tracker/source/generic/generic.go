@@ -249,9 +249,9 @@ func PreparePackage(r *hub.Repository, md *hub.PackageMetadata, pkgPath string) 
 	case hub.Radius:
 		kindData, err = prepareRadiusData(pkgPath)
 	case hub.GolangLib:
-		kindData, err = prepareRadiusData(pkgPath)
+		kindData, err = preparePythonLibData(pkgPath, p.Name)
 	case hub.PythonLib:
-		kindData, err = prepareRadiusData(pkgPath)
+		kindData, err = preparePythonLibData(pkgPath, p.Name)
 	}
 	if err != nil {
 		return nil, fmt.Errorf("error preparing package %s version %s data: %w", md.Name, md.Version, err)
@@ -395,6 +395,15 @@ func prepareKyvernoData(pkgPath, pkgName string) (map[string]interface{}, error)
 	// Return package data field
 	return map[string]interface{}{
 		KyvernoPolicyKey: string(policy),
+	}, nil
+}
+
+func preparePythonLibData(pkgPath, pkgName string) (map[string]interface{}, error) {
+	// Read policy file
+
+	// Return package data field
+	return map[string]interface{}{
+		"hello": "world",
 	}, nil
 }
 
