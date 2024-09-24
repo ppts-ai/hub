@@ -40,37 +40,23 @@ const InstallationModal = (props: Props) => {
   const [openStatus, setOpenStatus] = useState<boolean>(false);
   const [installMethods, setInstallMethods] = useState<InstallMethodOutput | null>(null); // undefined ???
   const isDisabled = !isNull(installMethods) && !isUndefined(installMethods.errorMessage);
-  const openCustomUrlWithFallback = (url: string) => {
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-  
-    const timeout = setTimeout(() => {
-      alert("Could not open the URL. Please ensure the appropriate app is installed.");
-      document.body.removeChild(iframe);
-      setOpenStatus(true);
-      navigate('?modal=install', {
-        state: location.state,
-        replace: true,
-      });
-    }, 1000);
-  
-    iframe.onload = () => {
-      clearTimeout(timeout);
-      document.body.removeChild(iframe);
-    };
-  
-    iframe.src = url;
-  }
+
   const onOpenModal = () => {
     if (!isNull(installMethods) && installMethods.methods.length > 0) {
+      console.log(window.parent);
       if(window.parent && window.parent.__TAURI__) {
         console.log("do installation");
         if(window.parent) {
           window.parent.postMessage("installation", "*");
         }
       }else {
-        openCustomUrlWithFallback(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
+        window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
+        setOpenStatus(true);
+        navigate('?modal=install', {
+          state: location.state,
+          replace: true,
+        });
+
       }
 
     } else {
