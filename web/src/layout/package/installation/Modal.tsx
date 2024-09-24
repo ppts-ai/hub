@@ -43,11 +43,23 @@ const InstallationModal = (props: Props) => {
 
   const onOpenModal = () => {
     if (!isNull(installMethods) && installMethods.methods.length > 0) {
-      setOpenStatus(true);
-      navigate('?modal=install', {
-        state: location.state,
-        replace: true,
-      });
+      if(window.__TAURI__) {
+        console.log("do installation");
+        if(window.parent) {
+          window.parent.postMessage("installation", "*");
+        }
+      }else {
+        const newWindow = window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
+        if (!newWindow) {
+          setOpenStatus(true);
+          navigate('?modal=install', {
+            state: location.state,
+            replace: true,
+          });
+        }
+
+      }
+
     } else {
       onCloseModal();
     }
