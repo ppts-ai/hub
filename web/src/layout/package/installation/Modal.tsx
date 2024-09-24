@@ -44,7 +44,7 @@ const InstallationModal = (props: Props) => {
   const onOpenModal = () => {
     if (!isNull(installMethods) && installMethods.methods.length > 0) {
       console.log(window.parent);
-      if(window.parent !== window) {
+      if(window.parent && window.parent !== window) {
         console.log("do installation");
         if(window.parent) {
           window.parent.postMessage("installation", "*");
