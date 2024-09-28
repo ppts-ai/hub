@@ -47,7 +47,7 @@ const InstallationModal = (props: Props) => {
       if(window.parent && window.parent !== window) {
         console.log("do installation");
         if(window.parent) {
-          window.parent.postMessage("installation", "*");
+          window.parent.postMessage(JSON.stringify(props.package), "*");
         }
       }else {
         window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
