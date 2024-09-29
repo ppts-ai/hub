@@ -1,3 +1,4 @@
+import { invoke } from '@tauri-apps/api/core';
 import classnames from 'classnames';
 import isNull from 'lodash/isNull';
 import isUndefined from 'lodash/isUndefined';
@@ -43,12 +44,9 @@ const InstallationModal = (props: Props) => {
 
   const onOpenModal = () => {
     if (!isNull(installMethods) && installMethods.methods.length > 0) {
-      console.log(window.parent);
-      if(window.parent && window.parent !== window) {
+      if(window.__TAURI__) {
         console.log("do installation");
-        if(window.parent) {
-          window.parent.postMessage(JSON.stringify(props.package), "*");
-        }
+        invoke('install', { appName: props.package!.displayName, binUrl: props.package!.homeUrl + "/releases/download/" + props.package!.version , sha256Digest: "bin[0].checksum" });
       }else {
         window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
         setOpenStatus(true);

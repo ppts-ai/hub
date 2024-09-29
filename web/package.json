@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
     "@analytics/google-analytics-v3": "^0.6.1",
+    "@tauri-apps/api": "^1.6.0",
     "analytics": "^0.8.14",
     "apexcharts": "3.49.0",
     "bootstrap": "^5.3.3",
