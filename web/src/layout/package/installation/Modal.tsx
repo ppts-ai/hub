@@ -47,7 +47,7 @@ const InstallationModal = (props: Props) => {
         console.log("do installation");
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const invoke = (window.__TAURI__ as any).core.invoke;
-        invoke('install', { appName: props.package!.displayName, binUrl: props.package!.homeUrl + "/releases/download/" + props.package!.version , sha256Digest: "bin[0].checksum" });
+        invoke('install', { appName: props.package!.displayName, binUrl: props.package!.homeUrl + "/" + props.package!.version , sha256Digest: "" });
       }else {
         window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
         setOpenStatus(true);
@@ -55,7 +55,6 @@ const InstallationModal = (props: Props) => {
           state: location.state,
           replace: true,
         });
-
       }
 
     } else {
