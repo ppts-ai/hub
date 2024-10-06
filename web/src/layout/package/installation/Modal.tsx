@@ -45,9 +45,9 @@ const InstallationModal = (props: Props) => {
     if (!isNull(installMethods) && installMethods.methods.length > 0) {
       if(window.__TAURI__) {
         console.log("do installation");
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const invoke = (window.__TAURI__ as any).core.invoke;
-        invoke('install', { appName: props.package!.displayName, binUrl: props.package!.homeUrl + "/" + props.package!.version , sha256Digest: "" });
+        console.log(props.package);
+        const invoke = window.__TAURI__.core.invoke;
+        invoke('install', { data: JSON.stringify(props.package) });
       }else {
         window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
         setOpenStatus(true);
