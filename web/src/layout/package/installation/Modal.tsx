@@ -43,7 +43,12 @@ const InstallationModal = (props: Props) => {
 
   const onOpenModal = () => {
     if (!isNull(installMethods) && installMethods.methods.length > 0) {
-      window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
+      console.log(navigator.userAgent);
+      if (navigator.userAgent.includes("Tauri")) {
+        window.location.href = "tauri://localhost/install";
+      } else {
+        window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
+      }
       setOpenStatus(true);
       navigate('?modal=install', {
         state: location.state,
