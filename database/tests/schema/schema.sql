@@ -569,8 +569,7 @@ select results_eq(
         (24, 'Meshery designs'),
         (25, 'OpenCost plugins'),
         (26, 'Radius recipes'),
-        (27, 'Golang Shared Lib'),
-        (28, 'Python Shared Lib')
+        (27, 'Docker App'),
     $$,
     'Repository kinds should exist'
 );

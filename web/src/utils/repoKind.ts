@@ -56,10 +56,8 @@ const getRepoKind = (repoName: string): RepositoryKind | null => {
       return RepositoryKind.OpenCost;
     case 'radius':
       return RepositoryKind.RadiusRecipe;
-    case 'pythonlib':
-      return RepositoryKind.PythonLib;
-    case 'golanglib':
-      return RepositoryKind.GolangLib;
+    case 'dockerapp':
+      return RepositoryKind.DockerApp;
     default:
       return null;
   }
@@ -121,10 +119,8 @@ const getRepoKindName = (repoKind: RepositoryKind): string | null => {
       return 'opencost';
     case RepositoryKind.RadiusRecipe:
       return 'radius';
-    case RepositoryKind.GolangLib:
-      return 'golanglib';
-    case RepositoryKind.PythonLib:
-      return 'pythonlib';
+    case RepositoryKind.DockerApp:
+      return 'dockerapp';
     default:
       return null;
   }

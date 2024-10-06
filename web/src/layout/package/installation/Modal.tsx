@@ -43,20 +43,12 @@ const InstallationModal = (props: Props) => {
 
   const onOpenModal = () => {
     if (!isNull(installMethods) && installMethods.methods.length > 0) {
-      if(window.__TAURI__) {
-        console.log("do installation");
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const invoke = (window.__TAURI__ as any).core.invoke;
-        invoke('install', { appName: props.package!.displayName, binUrl: props.package!.homeUrl + "/" + props.package!.version , sha256Digest: "" });
-      }else {
-        window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
-        setOpenStatus(true);
-        navigate('?modal=install', {
-          state: location.state,
-          replace: true,
-        });
-      }
-
+      window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
+      setOpenStatus(true);
+      navigate('?modal=install', {
+        state: location.state,
+        replace: true,
+      });
     } else {
       onCloseModal();
     }

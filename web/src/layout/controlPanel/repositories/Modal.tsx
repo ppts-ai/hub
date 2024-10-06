@@ -548,28 +548,17 @@ const RepositoryModal = (props: Props) => {
           </ExternalLink>
         );
         break;
-      case RepositoryKind.PythonLib:
+      case RepositoryKind.DockerApp:
         link = (
           <ExternalLink
-            href="/docs/topics/repositories/python-lib"
+            href="/docs/topics/repositories/docker-app"
             className="text-primary fw-bold"
             label="Open documentation"
           >
-            Python Lib
+            Docker App
           </ExternalLink>
         );
         break;
-        case RepositoryKind.GolangLib:
-          link = (
-            <ExternalLink
-              href="/docs/topics/repositories/golang-lib"
-              className="text-primary fw-bold"
-              label="Open documentation"
-            >
-              Golang Lib
-            </ExternalLink>
-          );
-          break;
     }
 
     if (isUndefined(link)) return;

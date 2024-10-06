@@ -28,8 +28,7 @@ export enum RepositoryKind {
   MesheryDesign,
   OpenCost,
   RadiusRecipe,
-  GolangLib,
-  PythonLib,
+  DockerApp,
 }
 
 export enum PackageCategory {
