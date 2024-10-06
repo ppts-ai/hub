@@ -53,3 +53,8 @@ type Service struct {
 type Network struct {
 	Driver string `json:"driver,omitempty"`
 }
+
+// Volume represents a volume configuration in Docker Compose.
+type Volume struct {
+	Driver string `json:"driver,omitempty"`
+}
