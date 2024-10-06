@@ -30,3 +30,26 @@ type GKExampleCase struct {
 	Path    string `json:"path"`
 	Content string `json:"content"`
 }
+
+type ComposeFile struct {
+	Version  string             `json:"version"`
+	Name  string             `json:"name"`
+	Services map[string]Service  `json:"services"`
+	Networks map[string]Network  `json:"networks,omitempty"`
+	Volumes  map[string]Volume   `json:"volumes,omitempty"`
+}
+
+// Service represents a service in Docker Compose.
+type Service struct {
+	Image       string             `json:"image,omitempty"`
+	ContainerName string           `json:"container_name,omitempty"`
+	Ports       []string           `json:"ports,omitempty"`
+	Volumes     []string           `json:"volumes,omitempty"`
+	Networks    []string           `json:"networks,omitempty"`
+	Environment map[string]string  `json:"environment,omitempty"`
+}
+
+// Network represents a network configuration in Docker Compose.
+type Network struct {
+	Driver string `json:"driver,omitempty"`
+}

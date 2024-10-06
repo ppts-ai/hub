@@ -398,10 +398,19 @@ func prepareKyvernoData(pkgPath, pkgName string) (map[string]interface{}, error)
 
 func prepareDockerAppData(pkgPath, pkgName string) (map[string]interface{}, error) {
 	// Read policy file
+	installPath := path.Join(pkgPath, "install.yaml")
+	installYaml, err := util.ReadRegularFile(installPath)
+	if err != nil {
+		return nil, fmt.Errorf("error reading docker install file: %w", err)
+	}
+	var install *ComposeFile
+	if err := yaml.Unmarshal(installYaml, &install); err != nil {
+		return nil, fmt.Errorf("error reading parsing install file: %w", err)
+	}
 
 	// Return package data field
 	return map[string]interface{}{
-		"hello": "world",
+		"install": install,
 	}, nil
 }
 
