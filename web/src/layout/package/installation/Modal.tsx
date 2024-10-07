@@ -47,7 +47,7 @@ const InstallationModal = (props: Props) => {
         console.log("do installation");
         console.log(props.package);
         const invoke = window.__TAURI__.core.invoke;
-        invoke('install', { data: JSON.stringify(props.package?.data) });
+        invoke('install', { appName: props.package!.name, icon: 'https://hub.ppts.ai/image/' +props.package!.logoImageId,  data: JSON.stringify(props.package?.data) });
       }else {
         window.open(`ppts://${props.package!.repository.kind}/${props.package!.repository.name}/${props.package!.name}`);
         setOpenStatus(true);
