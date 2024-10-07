@@ -398,19 +398,31 @@ func prepareKyvernoData(pkgPath, pkgName string) (map[string]interface{}, error)
 
 func prepareDockerAppData(pkgPath, pkgName string) (map[string]interface{}, error) {
 	// Read policy file
-	installPath := path.Join(pkgPath, "install.yaml")
-	installYaml, err := util.ReadRegularFile(installPath)
+	composePath := path.Join(pkgPath, "docker-compose.yaml")
+	composeYaml, err := util.ReadRegularFile(composePath)
 	if err != nil {
 		return nil, fmt.Errorf("error reading docker install file: %w", err)
 	}
-	var install *ComposeFile
-	if err := yaml.Unmarshal(installYaml, &install); err != nil {
+	var compose *ComposeFile
+	if err := yaml.Unmarshal(composeYaml, &compose); err != nil {
+		return nil, fmt.Errorf("error reading parsing install file: %w", err)
+	}
+	
+	formPath := path.Join(pkgPath, "form.yaml")
+	formYaml, err := util.ReadRegularFile(formPath)
+	if err != nil {
+		return nil, fmt.Errorf("error reading docker install file: %w", err)
+	}
+	var form *UIForm
+	if err := yaml.Unmarshal(formYaml, &form); err != nil {
 		return nil, fmt.Errorf("error reading parsing install file: %w", err)
 	}
 
 	// Return package data field
 	return map[string]interface{}{
-		"install": install,
+		"compose": compose,
+		"form": form
+	
 	}, nil
 }
 

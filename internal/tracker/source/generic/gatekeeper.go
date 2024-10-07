@@ -33,7 +33,6 @@ type GKExampleCase struct {
 
 type ComposeFile struct {
 	Version  string             `json:"version"`
-	Name  string             `json:"name"`
 	Services map[string]Service  `json:"services"`
 	Networks map[string]Network  `json:"networks,omitempty"`
 	Volumes  map[string]Volume   `json:"volumes,omitempty"`
@@ -57,4 +56,34 @@ type Network struct {
 // Volume represents a volume configuration in Docker Compose.
 type Volume struct {
 	Driver string `json:"driver,omitempty"`
+}
+
+type UIForm struct {
+	Type         string           `json:"type"`
+	Title        string           `json:"title"`
+	Version      string           `json:"version"`
+	Description  string           `json:"description"`
+	Instructions string           `json:"instructions"`
+	Labels       Labels           `json:"labels"`
+	Groups       []Group          `json:"groups"`
+	Properties   map[string]Property `json:"properties"`
+}
+
+type Labels struct {
+	Title   string `json:"title"`
+	Initial string `json:"initial"`
+}
+
+type Group struct {
+	Name   string   `json:"name"`
+	Fields []string `json:"fields"`
+}
+
+type Property struct {
+	Type        string   `json:"type"`
+	Title       string   `json:"title"`
+	Description string   `json:"description"`
+	DefaultValue     string     `json:"defaultValue,omitempty"`
+	Prefix    string `json:"prefix,omitempty"`
+	Suffix    string `json:"suffix,omitempty"`
 }
