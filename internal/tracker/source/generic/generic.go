@@ -421,8 +421,7 @@ func prepareDockerAppData(pkgPath, pkgName string) (map[string]interface{}, erro
 	// Return package data field
 	return map[string]interface{}{
 		"compose": compose,
-		"form": form
-	
+		"form": form,
 	}, nil
 }
 
