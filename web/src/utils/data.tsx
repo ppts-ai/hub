@@ -295,6 +295,15 @@ export const REPOSITORY_KINDS: RepoKindDef[] = [
     active: true,
   },
   {
+    kind: RepositoryKind.DockerApp,
+    label: 'dockerapp',
+    name: 'Docker App',
+    singular: 'Docker App',
+    plural: 'Docker Apps',
+    icon: <RepositoryIcon kind={RepositoryKind.RadiusRecipe} className="mw-100 mh-100" />,
+    active: true,
+  },
+  {
     kind: RepositoryKind.TektonPipeline,
     label: 'tekton-pipeline',
     name: 'Tekton pipelines',

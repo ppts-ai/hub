@@ -106,6 +106,7 @@ var (
 		hub.TektonPipeline,
 		hub.TektonTask,
 		hub.TektonStepAction,
+		hub.DockerApp,
 	}
 )
 

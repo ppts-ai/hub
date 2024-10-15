@@ -117,6 +117,10 @@ const ICONS = {
     default: '/static/media/radius.svg',
     white: '/static/media/radius-light.svg',
   },
+  [RepositoryKind.DockerApp]: {
+    default: '/static/media/radius.svg',
+    white: '/static/media/radius-light.svg',
+  },
 };
 
 const RepositoryIcon = (props: Props) => {

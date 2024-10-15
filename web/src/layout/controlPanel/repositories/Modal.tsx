@@ -548,6 +548,17 @@ const RepositoryModal = (props: Props) => {
           </ExternalLink>
         );
         break;
+      case RepositoryKind.DockerApp:
+        link = (
+          <ExternalLink
+            href="/docs/topics/repositories/docker-app"
+            className="text-primary fw-bold"
+            label="Open documentation"
+          >
+            Docker App
+          </ExternalLink>
+        );
+        break;
     }
 
     if (isUndefined(link)) return;

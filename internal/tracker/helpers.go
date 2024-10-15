@@ -127,6 +127,7 @@ func SetupSource(i *hub.TrackerSourceInput) hub.TrackerSource {
 		hub.Kubewarden,
 		hub.Kyverno,
 		hub.Meshery,
+		hub.DockerApp,
 		hub.OPA,
 		hub.OpenCost,
 		hub.Radius,

@@ -56,6 +56,8 @@ const getRepoKind = (repoName: string): RepositoryKind | null => {
       return RepositoryKind.OpenCost;
     case 'radius':
       return RepositoryKind.RadiusRecipe;
+    case 'dockerapp':
+      return RepositoryKind.DockerApp;
     default:
       return null;
   }
