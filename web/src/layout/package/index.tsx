@@ -1214,6 +1214,7 @@ const PackageView = () => {
                                 );
 
                               case RepositoryKind.Helm:
+                              case RepositoryKind.DockerApp:
                                 return (
                                   <>
                                     <div className="mb-2">

@@ -21,6 +21,10 @@ const REPOSITORY_KINDS: RepoKindDef[] = [
     name: 'Helm chart',
   },
   {
+    kind: RepositoryKind.DockerApp,
+    name: 'Docker app',
+  },
+  {
     kind: RepositoryKind.HelmPlugin,
     name: 'Helm plugin',
   },

@@ -48,6 +48,7 @@ interface PackageInfo {
 export enum InstallMethodKind {
   PublisherInstructions = 0,
   Helm,
+  DockerApp,
   HelmOCI,
   OLM,
   OLMOCI,
@@ -141,6 +142,7 @@ const getInstallMethods = (props: PackageInfo): InstallMethodOutput => {
 
     switch (pkg.repository.kind) {
       case RepositoryKind.Helm:
+      case RepositoryKind.DockerApp:
         if (pkg.repository.url.startsWith(OCI_PREFIX)) {
           output.methods.push({
             label: 'v3',

@@ -13,6 +13,7 @@ interface IconsList {
 
 const ICONS: IconsList = {
   [RepositoryKind.Helm]: <SVGIcons name="helm" />,
+  [RepositoryKind.DockerApp]: <SVGIcons name="helm" />,
   [RepositoryKind.HelmPlugin]: <SVGIcons name="helm-plugin" />,
   [RepositoryKind.OPA]: <SVGIcons name="opa" />,
   [RepositoryKind.OLM]: <SVGIcons name="olm" />,

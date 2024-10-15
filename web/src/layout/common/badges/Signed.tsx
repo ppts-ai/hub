@@ -27,6 +27,7 @@ const Signed = (props: Props) => {
   const notSupported = ![
     RepositoryKind.Container,
     RepositoryKind.Helm,
+    RepositoryKind.DockerApp,
     RepositoryKind.InspektorGadget,
     RepositoryKind.Kubewarden,
     RepositoryKind.TektonPipeline,

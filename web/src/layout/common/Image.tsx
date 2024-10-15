@@ -31,6 +31,7 @@ const Image = (props: Props) => {
     } else {
       switch (props.kind) {
         case RepositoryKind.Helm:
+          case RepositoryKind.DockerApp:
         case RepositoryKind.HelmPlugin:
           return '/static/media/placeholder_pkg_helm.png';
         case RepositoryKind.OLM:
