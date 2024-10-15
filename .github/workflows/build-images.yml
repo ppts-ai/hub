@@ -1,4 +1,4 @@
-name: Build images
+name: Build and push Docker images to DockerHub
 
 on:
   push:
@@ -14,38 +14,32 @@ jobs:
     steps:
       - name: Free disk space
         uses: jlumbroso/free-disk-space@main
+        
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-      - name: Login to AWS ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
       - name: Build, tag and push hub image
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          docker build -f cmd/hub/Dockerfile -t $ECR_REGISTRY/hub:$GITHUB_SHA .
-          docker push $ECR_REGISTRY/hub:$GITHUB_SHA
+          docker build -f cmd/hub/Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/hub:$GITHUB_SHA .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/hub:$GITHUB_SHA
+        
       - name: Build, tag and push db-migrator image
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          docker build -f database/migrations/Dockerfile -t $ECR_REGISTRY/db-migrator:$GITHUB_SHA .
-          docker push $ECR_REGISTRY/db-migrator:$GITHUB_SHA
+          docker build -f database/migrations/Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/db-migrator:$GITHUB_SHA .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/db-migrator:$GITHUB_SHA
+        
       - name: Build, tag and push scanner image
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          docker build -f cmd/scanner/Dockerfile -t $ECR_REGISTRY/scanner:$GITHUB_SHA .
-          docker push $ECR_REGISTRY/scanner:$GITHUB_SHA
+          docker build -f cmd/scanner/Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/scanner:$GITHUB_SHA .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/scanner:$GITHUB_SHA
+        
       - name: Build, tag and push tracker image
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          docker build -f cmd/tracker/Dockerfile -t $ECR_REGISTRY/tracker:$GITHUB_SHA .
-          docker push $ECR_REGISTRY/tracker:$GITHUB_SHA
+          docker build -f cmd/tracker/Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/tracker:$GITHUB_SHA .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/tracker:$GITHUB_SHA
