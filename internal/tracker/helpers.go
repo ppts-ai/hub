@@ -104,10 +104,9 @@ func SetupSource(i *hub.TrackerSourceInput) hub.TrackerSource {
 		} else {
 			source = generic.NewTrackerSource(i)
 		}
-	case hub.Helm:
+	case hub.Helm,
+	     hub.DockerApp:
 		source = helm.NewTrackerSource(i)
-    case hub.DockerApp:
-        source = helm.NewTrackerSource(i)
 	case hub.HelmPlugin:
 		source = helmplugin.NewTrackerSource(i)
 	case hub.Krew:

@@ -135,10 +135,11 @@ func lint(opts *lintOptions, out *output) error {
 		hub.OPA,
 		hub.OpenCost,
 		hub.Radius,
-		hub.DockerApp,
 		hub.TBAction:
 		report = lintGeneric(opts.path, kind)
 	case hub.Helm:
+		report = lintHelm(opts.path)
+	case hub.DockerApp:
 		report = lintHelm(opts.path)
 	case hub.HelmPlugin:
 		report = lintHelmPlugin(opts.path)
@@ -787,7 +788,8 @@ func (out *output) printPkgDetails(pkg *hub.Package) {
 				fmt.Fprintf(out, "  - %s\n", name)
 			}
 		}
-	case hub.Helm:
+	case hub.Helm,
+         hub.DockerApp:
 		out.print("Sign key", pkg.SignKey)
 
 		// Values schema

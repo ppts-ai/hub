@@ -598,7 +598,7 @@ func (h *Handlers) getChartArchive(ctx context.Context, packageID, version strin
 	}
 
 	// Only Helm charts packages can have templates
-	if p.Repository.Kind != hub.Helm {
+	if p.Repository.Kind != hub.Helm && p.Repository.Kind != hub.DockerApp {
 		return nil, fmt.Errorf("%w: operation not supported for this repository kind", hub.ErrInvalidInput)
 	}
 
