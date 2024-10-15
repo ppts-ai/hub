@@ -22,3 +22,4 @@ docs/www/content/topics/annotations/*
 dist
 ml/category/data/generated
 ml/category/__pycache__
+.project
