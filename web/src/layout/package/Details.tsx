@@ -62,8 +62,6 @@ const getVersionsTitle = (repoKind: RepositoryKind): string => {
   switch (repoKind) {
     case RepositoryKind.Helm:
       return 'Chart versions';
-    case RepositoryKind.DockerApp:
-        return 'Chart versions';
     case RepositoryKind.Container:
       return 'Tags';
     default:
@@ -164,7 +162,6 @@ const Details = (props: Props) => {
       {(() => {
         switch (props.package.repository.kind) {
           case RepositoryKind.Helm:
-          case RepositoryKind.DockerApp:  
           case RepositoryKind.Falco:
           case RepositoryKind.OPA:
           case RepositoryKind.TBAction:
@@ -253,7 +250,6 @@ const Details = (props: Props) => {
 
         switch (props.package.repository.kind) {
           case RepositoryKind.Helm:
-          case RepositoryKind.DockerApp:
             return (
               <>
                 {props.package.data && (
@@ -528,7 +524,7 @@ const Details = (props: Props) => {
         containers={props.package.containersImages || []}
       />
 
-      {(RepositoryKind.OLM === props.package.repository.kind || RepositoryKind.DockerApp === props.package.repository.kind ||
+      {(RepositoryKind.OLM === props.package.repository.kind ||
         (RepositoryKind.Helm === props.package.repository.kind &&
           !isUndefined(props.package.isOperator) &&
           props.package.isOperator)) && <CapabilityLevel capabilityLevel={props.package.capabilities} />}

@@ -43,7 +43,7 @@ interface Props {
   onAuthError: () => void;
 }
 
-const DEFAULT_SELECTED_REPOSITORY_KIND = RepositoryKind.DockerApp;
+const DEFAULT_SELECTED_REPOSITORY_KIND = RepositoryKind.Helm;
 const DEFAULT_VERSIONING_OPT = VersioningOption.Git;
 
 const RepositoryModal = (props: Props) => {
@@ -548,17 +548,6 @@ const RepositoryModal = (props: Props) => {
           </ExternalLink>
         );
         break;
-      case RepositoryKind.DockerApp:
-        link = (
-          <ExternalLink
-            href="/docs/topics/repositories/docker-app"
-            className="text-primary fw-bold"
-            label="Open documentation"
-          >
-            Docker App
-          </ExternalLink>
-        );
-        break;
     }
 
     if (isUndefined(link)) return;
@@ -667,8 +656,6 @@ const RepositoryModal = (props: Props) => {
     switch (selectedKind) {
       case RepositoryKind.Helm:
         return undefined;
-        case RepositoryKind.DockerApp:
-          return undefined;
       case RepositoryKind.OLM:
         return `^((https?://)|${OCI_PREFIX}).*`;
       case RepositoryKind.Container:
@@ -683,7 +670,6 @@ const RepositoryModal = (props: Props) => {
       {(() => {
         switch (selectedKind) {
           case RepositoryKind.Helm:
-            case RepositoryKind.DockerApp:
           case RepositoryKind.Container:
             return (
               <div className="row">
@@ -1124,7 +1110,6 @@ const RepositoryModal = (props: Props) => {
 
             {[
               RepositoryKind.Helm,
-              RepositoryKind.DockerApp,
               RepositoryKind.Falco,
               RepositoryKind.OLM,
               RepositoryKind.OPA,

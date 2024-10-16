@@ -55,7 +55,6 @@ export enum RepositoryKind {
   MesheryDesign,
   OpenCost,
   RadiusRecipe,
-  DockerApp,
 }
 
 export interface SearchResults {

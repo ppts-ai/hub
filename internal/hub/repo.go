@@ -127,9 +127,6 @@ const (
 
 	// Radius represents a repository with Radius recipes.
 	Radius RepositoryKind = 26
-
-	DockerApp RepositoryKind = 27
-
 )
 
 // GetKindName returns the name of the provided repository kind.

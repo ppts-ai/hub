@@ -175,8 +175,7 @@ func (t *Tracker) cloneRepository() (string, string, error) {
 	switch t.r.Kind {
 	case
 		hub.Container,
-		hub.Helm,
-        hub.DockerApp:
+		hub.Helm:
 		// These repositories are not cloned
 	case hub.OLM:
 		if strings.HasPrefix(t.r.URL, hub.RepositoryOCIPrefix) {

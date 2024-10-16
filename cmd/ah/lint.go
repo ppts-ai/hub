@@ -139,8 +139,6 @@ func lint(opts *lintOptions, out *output) error {
 		report = lintGeneric(opts.path, kind)
 	case hub.Helm:
 		report = lintHelm(opts.path)
-	case hub.DockerApp:
-		report = lintHelm(opts.path)
 	case hub.HelmPlugin:
 		report = lintHelmPlugin(opts.path)
 	case hub.Krew:
@@ -788,8 +786,7 @@ func (out *output) printPkgDetails(pkg *hub.Package) {
 				fmt.Fprintf(out, "  - %s\n", name)
 			}
 		}
-	case hub.Helm,
-         hub.DockerApp:
+	case hub.Helm:
 		out.print("Sign key", pkg.SignKey)
 
 		// Values schema
