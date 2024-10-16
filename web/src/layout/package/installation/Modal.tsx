@@ -43,11 +43,19 @@ const InstallationModal = (props: Props) => {
 
   const onOpenModal = () => {
     if (!isNull(installMethods) && installMethods.methods.length > 0) {
-      setOpenStatus(true);
-      navigate('?modal=install', {
-        state: location.state,
-        replace: true,
-      });
+      if(window.__TAURI__) {
+        console.log("do installation");
+        console.log(props.package);
+        const invoke = window.__TAURI__.core.invoke;
+        invoke('install', { appName: props.package!.name, icon: 'https://hub.ppts.ai/image/' +props.package!.logoImageId,  data: JSON.stringify(props.package?.data) });
+      }else {
+        setOpenStatus(true);
+        navigate('?modal=install', {
+          state: location.state,
+          replace: true,
+        });
+      }
+
     } else {
       onCloseModal();
     }
